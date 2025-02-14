@@ -68,9 +68,7 @@
 #ifndef NO_HMAC
     #include <wolfssl/wolfcrypt/hmac.h>
 #endif
-#ifndef NO_RC4
-    #include <wolfssl/wolfcrypt/arc4.h>
-#endif
+
 #ifndef NO_SHA256
     #include <wolfssl/wolfcrypt/sha256.h>
 #endif
@@ -946,10 +944,7 @@
     #endif
 #endif
 
-#if defined(BUILD_SSL_RSA_WITH_RC4_128_SHA) || \
-    defined(BUILD_SSL_RSA_WITH_RC4_128_MD5)
-    #define BUILD_ARC4
-#endif
+
 
 #if defined(BUILD_SSL_RSA_WITH_3DES_EDE_CBC_SHA)
     #define BUILD_DES3
@@ -1040,10 +1035,7 @@
 #endif
 
 #if !defined(NO_RC4) && !defined(WSSL_HARDEN_TLS)
-    /* MUST NOT negotiate RC4 cipher suites
-     * https://www.rfc-editor.org/rfc/rfc9325#section-4.1 */
-    #undef  BUILD_ARC4
-    #define BUILD_ARC4
+
 #endif
 
 #ifdef HAVE_CHACHA
@@ -4398,9 +4390,7 @@ enum CipherSrc {
 
 /* cipher for now */
 typedef struct Ciphers {
-#ifdef BUILD_ARC4
-    Arc4*   arc4;
-#endif
+
 #ifdef BUILD_DES3
     Des3*   des3;
 #endif
