@@ -664,10 +664,7 @@
             #define BUILD_TLS_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256
             #define BUILD_TLS_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384
         #endif /* HAVE_ARIA */
-        #if !defined(NO_RC4) && !defined(WSSL_HARDEN_TLS)
 
-            #endif
-        #endif
         #if !defined(NO_DES3) && !(defined(WSSL_HARDEN_TLS) && \
                                            WSSL_HARDEN_TLS > 112) && \
             !defined(NO_DES3_TLS_SUITES)
