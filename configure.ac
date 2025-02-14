@@ -5228,19 +5228,7 @@ AC_ARG_ENABLE([des3-tls-suites],
     [ ENABLED_DES3_TLS_SUITES=no ]
     )
 
-# ARC4
-if (test "$ENABLED_OPENSSH" = "yes" && test "x$ENABLED_FIPS" = "xno") || \
-   test "$ENABLED_WPAS" = "yes" || test "$ENABLED_KRB" = "yes"
-then
-    # Requires RC4 make sure on (if not forcefully disabled with --disable-arc4)
-    test "$enable_arc4" = "" && enable_arc4=yes
-fi
 
-AC_ARG_ENABLE([arc4],
-    [AS_HELP_STRING([--enable-arc4],[Enable ARC4 (default: disabled)])],
-    [ ENABLED_ARC4=$enableval ],
-    [ ENABLED_ARC4=no ]
-    )
 
 # MD5
 AC_ARG_ENABLE([md5],

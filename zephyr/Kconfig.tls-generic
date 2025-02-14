@@ -185,9 +185,6 @@ config WOLFSSL_CIPHER_DES_ENABLED
 	bool "Enable the DES block cipher"
 	default y
 
-config WOLFSSL_CIPHER_ARC4_ENABLED
-	bool "Enable the ARC4 stream cipher"
-
 config WOLFSSL_CIPHER_CHACHA20_ENABLED
 	bool "Enable the ChaCha20 stream cipher"
 

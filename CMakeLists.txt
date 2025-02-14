@@ -1346,13 +1346,7 @@ if(NOT WOLFSSL_DES3_TLS_SUITES)
     list(APPEND WOLFSSL_DEFINITIONS "-DNO_DES3_TLS_SUITES")
 endif()
 
-# ARC4
-set(WOLFSSL_ARC4_HELP_STRING "Enable ARC4 (default: disabled)")
-add_option("WOLFSSL_ARC4" ${WOLFSSL_ARC4_HELP_STRING} "no" "yes;no")
 
-if(WOLFSSL_OPENSSH OR WOLFSSL_WPAS)
-    override_cache(WOLFSSL_ARC4 "yes")
-endif()
 
 # MD5
 set(WOLFSSL_MD5_HELP_STRING "Enable MD5 (default: enabled)")
@@ -1655,15 +1649,7 @@ if(WOLFSSL_EXTENDED_MASTER)
 endif()
 
 
-if(NOT WOLFSSL_ARC4)
-    list(APPEND WOLFSSL_DEFINITIONS "-DNO_RC4")
-else()
-    # turn off ARC4 if leanpsk or leantls on
-    if(WOLFSSL_LEAN_PSK OR WOLFSSL_LEAN_TLS)
-        list(APPEND WOLFSSL_DEFINITIONS "-DNO_RC4")
-        override_cache(WOLFSSL_ARC4 "no")
-    endif()
-endif()
+list(APPEND WOLFSSL_DEFINITIONS "-DNO_RC4")
 
 # TODO: - TLS extensions
 #       - Early data handshake
