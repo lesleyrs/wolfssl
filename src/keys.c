@@ -2377,17 +2377,7 @@ int SetKeys(Ciphers* enc, Ciphers* dec, Keys* keys, CipherSpecs* specs,
     (void)rng;
     (void)tls13;
 
-#ifdef BUILD_ARC4
 
-        }
-
-        }
-
-
-        if (dec) {
-            if (wc_Arc4Init(dec->arc4, heap, devId) != 0) {
-                WOLFSSL_MSG("Arc4Init failed in SetKeys");
-                return ASYNC_INIT_E;
             }
         }
 
@@ -2405,10 +2395,7 @@ int SetKeys(Ciphers* enc, Ciphers* dec, Keys* keys, CipherSpecs* specs,
         }
         if (enc)
             enc->setup = 1;
-        if (dec)
-            dec->setup = 1;
-    }
-#endif /* BUILD_ARC4 */
+
 
 
 #if defined(HAVE_CHACHA) && defined(HAVE_POLY1305) && !defined(NO_CHAPOL_AEAD)
