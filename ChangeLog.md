@@ -8,6 +8,7 @@ NOTE:
  * --enable-heapmath is deprecated.
  * In this release, the default cipher suite preference is updated to prioritize
  TLS_AES_256_GCM_SHA384 over TLS_AES_128_GCM_SHA256 when enabled.
+ * ARC4/RC4 algorithm has been removed due to security concerns and deprecation in modern protocols.
  * This release adds a sanity check for including wolfssl/options.h or
  user_settings.h.
 
