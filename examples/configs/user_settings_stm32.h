@@ -746,7 +746,6 @@ extern "C" {
 #define WOLFSSL_NO_CLIENT_AUTH /* disable client auth for Ed25519/Ed448 */
 
 #define NO_DSA
-#define NO_RC4
 #define NO_MD4
 #define NO_DES3
 #define WOLFSSL_NO_SHAKE128

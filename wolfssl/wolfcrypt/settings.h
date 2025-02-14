@@ -1878,7 +1878,6 @@ extern void uITRON4_free(void *p) ;
     #define NO_DEV_RANDOM
     #undef  NO_WOLFSSL_DIR
     #define NO_WOLFSSL_DIR
-    #undef  NO_RC4
     #define NO_RC4
 
     /* enable features */
@@ -4232,10 +4231,7 @@ extern void uITRON4_free(void *p) ;
 
 /* RC4: Per RFC7465 Feb 2015, the cipher suite has been deprecated due to a
  * number of exploits capable of decrypting portions of encrypted messages. */
-#ifndef WOLFSSL_ALLOW_RC4
-    #undef  NO_RC4
-    #define NO_RC4
-#endif
+#define NO_RC4
 
 #if !defined(WOLFSSL_NO_ASYNC_IO) || defined(WOLFSSL_ASYNC_CRYPT) || \
      defined(WOLFSSL_NONBLOCK_OCSP)

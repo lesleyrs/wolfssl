@@ -335,7 +335,6 @@ extern "C" {
     //#define NO_KDF
     //#define NO_HMAC
 
-    #define NO_RC4
     #define NO_DES3
     //#define NO_AES
     #define NO_AES_CBC

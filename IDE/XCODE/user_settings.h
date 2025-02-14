@@ -65,7 +65,6 @@
     #define HAVE_EXTENDED_MASTER
 
     /* off by default */
-    #define NO_RC4
     #define NO_MD4
     #define NO_DSA
     #define NO_PSK
