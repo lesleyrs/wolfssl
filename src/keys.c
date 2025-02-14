@@ -2378,25 +2378,12 @@ int SetKeys(Ciphers* enc, Ciphers* dec, Keys* keys, CipherSpecs* specs,
     (void)tls13;
 
 #ifdef BUILD_ARC4
-    if (specs->bulk_cipher_algorithm == wolfssl_rc4) {
-        word32 sz = specs->key_size;
-        if (enc && enc->arc4 == NULL) {
-            enc->arc4 = (Arc4*)XMALLOC(sizeof(Arc4), heap, DYNAMIC_TYPE_CIPHER);
-            if (enc->arc4 == NULL)
-                 return MEMORY_E;
-        }
-        if (dec && dec->arc4 == NULL) {
-            dec->arc4 = (Arc4*)XMALLOC(sizeof(Arc4), heap, DYNAMIC_TYPE_CIPHER);
-            if (dec->arc4 == NULL)
-                return MEMORY_E;
+
         }
 
-        if (enc) {
-            if (wc_Arc4Init(enc->arc4, heap, devId) != 0) {
-                WOLFSSL_MSG("Arc4Init failed in SetKeys");
-                return ASYNC_INIT_E;
-            }
         }
+
+
         if (dec) {
             if (wc_Arc4Init(dec->arc4, heap, devId) != 0) {
                 WOLFSSL_MSG("Arc4Init failed in SetKeys");
