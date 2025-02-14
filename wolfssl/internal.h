@@ -345,18 +345,7 @@
 #endif
 
 #ifndef WOLFSSL_AEAD_ONLY
-    #if !defined(NO_RSA) && !defined(NO_RC4) && !defined(WSSL_HARDEN_TLS)
-        /* MUST NOT negotiate RC4 cipher suites
-         * https://www.rfc-editor.org/rfc/rfc9325#section-4.1 */
-        #if defined(WOLFSSL_STATIC_RSA)
-            #if !defined(NO_SHA)
-                #define BUILD_SSL_RSA_WITH_RC4_128_SHA
-            #endif
-            #if !defined(NO_MD5)
-                #define BUILD_SSL_RSA_WITH_RC4_128_MD5
-            #endif
-        #endif
-    #endif
+
 
     #if !defined(NO_RSA) && !defined(NO_DES3) && !defined(NO_DES3_TLS_SUITES)
         #if !defined(NO_SHA)
@@ -676,28 +665,7 @@
             #define BUILD_TLS_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384
         #endif /* HAVE_ARIA */
         #if !defined(NO_RC4) && !defined(WSSL_HARDEN_TLS)
-            /* MUST NOT negotiate RC4 cipher suites
-             * https://www.rfc-editor.org/rfc/rfc9325#section-4.1 */
-            #if !defined(NO_SHA)
-                #if !defined(NO_RSA)
-                    #ifndef WOLFSSL_AEAD_ONLY
-                        #define BUILD_TLS_ECDHE_RSA_WITH_RC4_128_SHA
-                    #endif
-                    #if defined(WOLFSSL_STATIC_DH) && defined(HAVE_ECC)
-                        #define BUILD_TLS_ECDH_RSA_WITH_RC4_128_SHA
-                    #endif
-                #endif
 
-                #if defined(HAVE_ECC) || \
-                        (defined(HAVE_CURVE25519) && defined(HAVE_ED25519)) || \
-                        (defined(HAVE_CURVE448) && defined(HAVE_ED448))
-                    #ifndef WOLFSSL_AEAD_ONLY
-                        #define BUILD_TLS_ECDHE_ECDSA_WITH_RC4_128_SHA
-                    #endif
-                #endif
-                #if defined(WOLFSSL_STATIC_DH) && defined(HAVE_ECC)
-                    #define BUILD_TLS_ECDH_ECDSA_WITH_RC4_128_SHA
-                #endif
             #endif
         #endif
         #if !defined(NO_DES3) && !(defined(WSSL_HARDEN_TLS) && \
